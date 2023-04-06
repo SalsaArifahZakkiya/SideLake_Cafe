@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Menu Cafe - Side Lake Cafe</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- navbar Brand -->
+            <a class="navbar-brand ps-3" href="index.html">
+                <!-- Sidebar toggle -->
+                <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </a>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0 ">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+             <!-- Navbar-->
+             <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <i class="fa-solid fa-basket-shopping"></i>
+            </button>
+             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <a class="nav-link m-1" href="#" role="button" aria-expanded="false"> Barista <i class="fas fa-user fa-fw"></i></a>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" aria-label="">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">
+                                <img src="/assets/img/Picture1.png" alt="png">
+                                <br><br>
+                                <br>
+                                <h5 class="nameCafe">
+                                    Side Lake Cafe
+                                </h5>
+                            </div>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"></div>
+                                Menu Cafe
+                            </a>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"></div>
+                                Product Cafe
+                            </a>
+                            <a class="nav-link" href="StockUp.html">
+                                <div class="sb-nav-link-icon"></i></div>
+                                Stock Up Cafe
+                            </a>
+                            <a class="nav-link" href="StockDown.html">
+                                <div class="sb-nav-link-icon"></i></div>
+                                Stock Down Cafe
+                            </a>
+                        </div>
+                        
+                    </div>
+                    <div class="buttonLogout justify-content-lg-center d-flex m-3 p-4">
+                        <button type="button" class="btn btn-danger">Logout</button>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Barista
+                    </div>
+                </nav>
+            </div>
+            
+            <div id="layoutSidenav_content">
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Bill’s</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                         
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Understood</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <main>
+                    <!-- Layout menu -->
+                    <div class="container-fluid">
+                        <div class="container">
+                            <div class="row">
+                                <h1 class="mt-4">Menu Side Lake Cafe</h1>
+                                <div class="col-md-6 py-2">
+                                    <h3> Drink menu </h3>
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <a href="#" class="text-tautan">Lihat Semua</a>
+                                </div>
+                            </div>
+                            <!-- container -->
+                            <div class="container-fluid">
+                                
+                                <!-- row -->
+                                <div class="row row-cols-1 row-cols-md-4 g-4">
+                                    <!-- drink 1 -->
+                                    <div class="col">
+                                            <div class="card">
+                                                <img src="assets/img/americano_coffe4.png" class="card-img-top p-3" alt="png">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Expresso</h5>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <small class="text-harga">24K</small>
+                                                        </div>
+                                                        <div class="text-end">
+                                                            <button class="btn btn-success" name="button1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1"> + </button>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="collapse" id="collapseExample1" >
+                                                    <div class="card card-body" style="background-color: rgba(229, 199, 163, 1);" >
+                                                            <div class="p-2">
+                                                                <h6> Sugar </h6>
+                                                                <input class="radio__input" type="radio" value="option1" name="SugarRadio" id="myRadio1">
+                                                                <label class="radio__label" for="myRadio1"> Non </label>
+                                                                
+                                                                <input class="radio__input " type="radio" value="option2" name="SugarRadio" id="myRadio2">
+                                                                <label class="radio__label" for="myRadio2">Les </label>
+                                                                
+                                                                <input class="radio__input" type="radio" value="option3" name="SugarRadio" id="myRadio3">
+                                                                <label class="radio__label" for="myRadio3"> Normal </label>
+                                                            </div>
+                                                            <div class="p-2">
+                                                                <h6> Ice </h6>
+                                                                <input class="radio__input" type="radio" value="option1" name="IceRadio" id="myRadio4">
+                                                                <label class="radio__label" for="myRadio4"> Non </label>
+                                                                
+                                                                <input class="radio__input " type="radio" value="option2" name="IceRadio" id="myRadio5">
+                                                                <label class="radio__label" for="myRadio5">Les </label>
+                                                                
+                                                                <input class="radio__input" type="radio" value="option3" name="IceRadio" id="myRadio6">
+                                                                <label class="radio__label" for="myRadio6"> Normal </label>
+                                                            
+                                                    </div>
+                                                </div>
+                                              </div>
+                                        
+                                    </div>
+                                    <!-- end drink 1 -->
+                                    <!-- drink 2 -->
+                                    <div class="col">
+                                            <div class="card">
+                                                <img src="assets/img/americano_coffe4.png" class="card-img-top p-3" alt="png">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Expresso</h5>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <small class="text-harga">24K</small>
+                                                        </div>
+                                                        <div class="text-end">
+                                                            <button class="btn btn-success" name="button2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2"> + </button>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="collapse" id="collapseExample2" >
+                                                    <div class="card card-body" style="background-color: rgba(229, 199, 163, 1);" >
+                                                            <div class="p-2">
+                                                                <h6> Sugar </h6>
+                                                                <input class="radio__input" type="radio" value="option1" name="SugarRadio2" id="myRadio_1">
+                                                                <label class="radio__label" for="myRadio_1"> Non </label>
+                                                                
+                                                                <input class="radio__input " type="radio" value="option2" name="SugarRadio2" id="myRadio_2">
+                                                                <label class="radio__label" for="myRadio_2">Les </label>
+                                                                
+                                                                <input class="radio__input" type="radio" value="option3" name="SugarRadio2" id="myRadio_3">
+                                                                <label class="radio__label" for="myRadio_3"> Normal </label>
+                                                            </div>
+                                                            <div class="p-2">
+                                                                <h6> Ice </h6>
+                                                                <input class="radio__input" type="radio" value="option1" name="IceRadio2" id="myRadio_4">
+                                                                <label class="radio__label" for="myRadio_4"> Non </label>
+                                                                
+                                                                <input class="radio__input " type="radio" value="option2" name="IceRadio2" id="myRadio_5">
+                                                                <label class="radio__label" for="myRadio_5">Les </label>
+                                                                
+                                                                <input class="radio__input" type="radio" value="option3" name="IceRadio2" id="myRadio_6">
+                                                                <label class="radio__label" for="myRadio_6"> Normal </label>
+                                                    </div>
+                                                </div>
+                                              </div>
+                                    </div>
+                                    <!-- end drink 2 -->
+                                    <!-- drink 3 -->
+                                    <div class="col">
+                                            <div class="card">
+                                                <img src="assets/img/americano_coffe4.png" class="card-img-top p-3" alt="png">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Expresso</h5>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <small class="text-harga">24K</small>
+                                                        </div>
+                                                        <div class="text-end">
+                                                            <button class="btn btn-success" name="button3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3"> + </button>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="collapse" id="collapseExample3">
+                                                    <div class="card card-body" style="background-color: rgba(229, 199, 163, 1);" >
+                                                            <div class="p-2">
+                                                                <h6> Sugar </h6>
+                                                                <input class="radio__input" type="radio" value="option1" name="SugarRadio3" id="myRadio1_">
+                                                                <label class="radio__label" for="myRadio1_"> Non </label>
+                                                                
+                                                                <input class="radio__input " type="radio" value="option2" name="SugarRadio3" id="myRadio2_">
+                                                                <label class="radio__label" for="myRadio2_">Les </label>
+                                                                
+                                                                <input class="radio__input" type="radio" value="option3" name="SugarRadio3" id="myRadio3_">
+                                                                <label class="radio__label" for="myRadio3_"> Normal </label>
+                                                            </div>
+                                                            <div class="p-2">
+                                                                <h6> Ice </h6>
+                                                                <input class="radio__input" type="radio" value="option1" name="IceRadio3" id="myRadio4_">
+                                                                <label class="radio__label" for="myRadio4_"> Non </label>
+                                                                
+                                                                <input class="radio__input " type="radio" value="option2" name="IceRadio3" id="myRadio5_">
+                                                                <label class="radio__label" for="myRadio5_">Les </label>
+                                                                
+                                                                <input class="radio__input" type="radio" value="option3" name="IceRadio3" id="myRadio6_">
+                                                                <label class="radio__label" for="myRadio6_"> Normal </label>
+                                                    </div>
+                                                </div>
+                                              </div>
+                                        
+                                    </div>
+                                    <!-- end drink 3 -->
+                                    <!-- drink 4 -->
+                                    <div class="col">
+                                        
+                                            <div class="card">
+                                                <img src="assets/img/americano_coffe4.png" class="card-img-top p-3" alt="png">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Expresso</h5>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <small class="text-harga">24K</small>
+                                                        </div>
+                                                        <div class="text-end">
+                                                            <button class="btn btn-success" name="button4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4 "> + </button>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="collapse" id="collapseExample4" >
+                                                    <div class="card card-body" style="background-color: rgba(229, 199, 163, 1);" >
+                                                            <div class="p-2">
+                                                                <h6> Sugar </h6>
+                                                                <input class="radio__input" type="radio" value="option1" name="SugarRadio4" id="myRadio1__">
+                                                                <label class="radio__label" for="myRadio1__"> Non </label>
+                                                                
+                                                                <input class="radio__input " type="radio" value="option2" name="SugarRadio4" id="myRadio2__">
+                                                                <label class="radio__label" for="myRadio2__">Les </label>
+                                                                
+                                                                <input class="radio__input" type="radio" value="option3" name="SugarRadio4" id="myRadio3__">
+                                                                <label class="radio__label" for="myRadio3__"> Normal </label>
+                                                            </div>
+                                                            <div class="p-2">
+                                                                <h6> Ice </h6>
+                                                                <input class="radio__input" type="radio" value="option1" name="IceRadio4" id="myRadio4__">
+                                                                <label class="radio__label" for="myRadio4__"> Non </label>
+                                                                
+                                                                <input class="radio__input " type="radio" value="option2" name="IceRadio4" id="myRadio5__">
+                                                                <label class="radio__label" for="myRadio5__">Les </label>
+                                                                
+                                                                <input class="radio__input" type="radio" value="option3" name="IceRadio4" id="myRadio6__">
+                                                                <label class="radio__label" for="myRadio6__"> Normal </label>
+                                            
+                                                    </div>
+                                                </div>
+                                              </div>
+                                    </div>
+                                    <!-- end drink 4 -->
+                                    <!-- drink 5 -->
+                                    <div class="col">
+                                        
+                                        <div class="card">
+                                            <img src="assets/img/americano_coffe4.png" class="card-img-top p-3" alt="png">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Expresso</h5>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <small class="text-harga">24K</small>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <button class="btn btn-success" name="button5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample5 "> + </button>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="collapse" id="collapseExample5" >
+                                                <div class="card card-body" style="background-color: rgba(229, 199, 163, 1);" >
+                                                        <div class="p-2">
+                                                            <h6> Sugar </h6>
+                                                            <input class="radio__input" type="radio" value="option1" name="SugarRadio5" id="myRadio-1">
+                                                            <label class="radio__label" for="myRadio-1"> Non </label>
+                                                            
+                                                            <input class="radio__input " type="radio" value="option2" name="SugarRadio5" id="myRadio-2">
+                                                            <label class="radio__label" for="myRadio-2">Les </label>
+                                                            
+                                                            <input class="radio__input" type="radio" value="option3" name="SugarRadio5" id="myRadio-3">
+                                                            <label class="radio__label" for="myRadio-3"> Normal </label>
+                                                        </div>
+                                                        <div class="p-2">
+                                                            <h6> Ice </h6>
+                                                            <input class="radio__input" type="radio" value="option1" name="IceRadio5" id="myRadio-4">
+                                                            <label class="radio__label" for="myRadio-4"> Non </label>
+                                                            
+                                                            <input class="radio__input " type="radio" value="option2" name="IceRadio5" id="myRadio-5">
+                                                            <label class="radio__label" for="myRadio-5">Les </label>
+                                                            
+                                                            <input class="radio__input" type="radio" value="option3" name="IceRadio5" id="myRadio-6">
+                                                            <label class="radio__label" for="myRadio-6"> Normal </label>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <!-- end drink 5 -->
+                                    <!-- drink 6 -->
+                                    <div class="col">
+                                            
+                                        <div class="card">
+                                            <img src="assets/img/americano_coffe4.png" class="card-img-top p-3" alt="png">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Expresso</h5>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <small class="text-harga">24K</small>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <button class="btn btn-success" name="button6" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample6" aria-expanded="false" aria-controls="collapseExample6"> + </button>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="collapse" id="collapseExample6" >
+                                                <div class="card card-body" style="background-color: rgba(229, 199, 163, 1);" >
+                                                        <div class="p-2">
+                                                            <h6> Sugar </h6>
+                                                            <input class="radio__input" type="radio" value="option1" name="SugarRadio6" id="myRadio--1">
+                                                            <label class="radio__label" for="myRadio--1"> Non </label>
+                                                            
+                                                            <input class="radio__input " type="radio" value="option2" name="SugarRadio6" id="myRadio--2">
+                                                            <label class="radio__label" for="myRadio--2">Les </label>
+                                                            
+                                                            <input class="radio__input" type="radio" value="option3" name="SugarRadio6" id="myRadio--3">
+                                                            <label class="radio__label" for="myRadio--3"> Normal </label>
+                                                        </div>
+                                                        <div class="p-2">
+                                                            <h6> Ice </h6>
+                                                            <input class="radio__input" type="radio" value="option1" name="IceRadio6" id="myRadio--4">
+                                                            <label class="radio__label" for="myRadio--4"> Non </label>
+                                                            
+                                                            <input class="radio__input " type="radio" value="option2" name="IceRadio6" id="myRadio--5">
+                                                            <label class="radio__label" for="myRadio--5">Les </label>
+                                                            
+                                                            <input class="radio__input" type="radio" value="option3" name="IceRadio6" id="myRadio--6">
+                                                            <label class="radio__label" for="myRadio--6"> Normal </label>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <!-- end drink 6 -->
+                                    <!-- drink 7 -->
+                                    <div class="col">
+                                        <div class="card">
+                                            <img src="assets/img/americano_coffe4.png" class="card-img-top p-3" alt="png">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Expresso</h5>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <small class="text-harga">24K</small>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <button class="btn btn-success" name="button7" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample7" aria-expanded="false" aria-controls="collapseExample7 "> + </button>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="collapse" id="collapseExample7" >
+                                                <div class="card card-body" style="background-color: rgba(229, 199, 163, 1);" >
+                                                        <div class="p-2">
+                                                            <h6> Sugar </h6>
+                                                            <input class="radio__input" type="radio" value="option1" name="SugarRadio7" id="myRadio+1">
+                                                            <label class="radio__label" for="myRadio+1"> Non </label>
+                                                            
+                                                            <input class="radio__input " type="radio" value="option2" name="SugarRadio7" id="myRadio+2">
+                                                            <label class="radio__label" for="myRadio+2">Les </label>
+                                                            
+                                                            <input class="radio__input" type="radio" value="option3" name="SugarRadio7" id="myRadio+3">
+                                                            <label class="radio__label" for="myRadio+3"> Normal </label>
+                                                        </div>
+                                                        <div class="p-2">
+                                                            <h6> Ice </h6>
+                                                            <input class="radio__input" type="radio" value="option1" name="IceRadio7" id="myRadio+4">
+                                                            <label class="radio__label" for="myRadio+4"> Non </label>
+                                                            
+                                                            <input class="radio__input " type="radio" value="option2" name="IceRadio7" id="myRadio+5">
+                                                            <label class="radio__label" for="myRadio+5">Les </label>
+                                                            
+                                                            <input class="radio__input" type="radio" value="option3" name="IceRadio7" id="myRadio+6">
+                                                            <label class="radio__label" for="myRadio+6"> Normal </label>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <!-- end drink 7 -->
+                                    <!-- drink 8 -->
+                                    <div class="col">       
+                                        <div class="card">
+                                            <img src="assets/img/americano_coffe4.png" class="card-img-top p-3" alt="png">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Expresso</h5>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <small class="text-harga">24K</small>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <button class="btn btn-success" name="button8" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample8" aria-expanded="false" aria-controls="collapseExample8 "> + </button>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="collapse" id="collapseExample8" >
+                                                <div class="card card-body" style="background-color: rgba(229, 199, 163, 1);" >
+                                                        <div class="p-2">
+                                                            <h6> Sugar </h6>
+                                                            <input class="radio__input" type="radio" value="option1" name="SugarRadio8" id="myRadio*1">
+                                                            <label class="radio__label" for="myRadio*1"> Non </label>
+                                                            
+                                                            <input class="radio__input " type="radio" value="option2" name="SugarRadio8" id="myRadio*2">
+                                                            <label class="radio__label" for="myRadio*2">Les </label>
+                                                            
+                                                            <input class="radio__input" type="radio" value="option3" name="SugarRadio8" id="myRadio*3">
+                                                            <label class="radio__label" for="myRadio*3"> Normal </label>
+                                                        </div>
+                                                        <div class="p-2">
+                                                            <h6> Ice </h6>
+                                                            <input class="radio__input" type="radio" value="option1" name="IceRadio8" id="myRadio*4">
+                                                            <label class="radio__label" for="myRadio*4"> Non </label>
+                                                            
+                                                            <input class="radio__input " type="radio" value="option2" name="IceRadio8" id="myRadio*5">
+                                                            <label class="radio__label" for="myRadio*5">Les </label>
+                                                            
+                                                            <input class="radio__input" type="radio" value="option3" name="IceRadio8" id="myRadio*6">
+                                                            <label class="radio__label" for="myRadio*6"> Normal </label>
+                                                        </div>
+                                                </div>
+                                            </div>  
+                                    </div>
+                                    <!-- end drink 8 -->
+                                </div>
+                                <!-- end row -->
+                            </div>
+                            <!-- end container -->
+                        </div>
+                        <!-- end layout -->
+                        </div>
+                        
+                </main>
+            </div>
+        </div>
+
+        
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <!-- <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
+    </body>
+</html>
