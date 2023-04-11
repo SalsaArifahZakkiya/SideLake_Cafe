@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Menu Cafe - Side Lake Cafe</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- navbar Brand -->
+            <a class="navbar-brand ps-3" href="index.html">
+                <!-- Sidebar toggle -->
+                <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </a>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0 ">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+             <!-- Navbar-->
+             <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <i class="fa-solid fa-basket-shopping"></i>
+            </button>
+             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <a class="nav-link m-1" href="#" role="button" aria-expanded="false"> Barista <i class="fas fa-user fa-fw"></i></a>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" aria-label="">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">
+                                <img src="/assets/img/Picture1.png" alt="png">
+                                <br><br>
+                                <br>
+                                <h5 class="nameCafe">
+                                    Side Lake Cafe
+                                </h5>
+                            </div>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"></div>
+                                Menu Cafe
+                            </a>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"></div>
+                                Product Cafe
+                            </a>
+                            <a class="nav-link" href="StockUp.html">
+                                <div class="sb-nav-link-icon"></i></div>
+                                Stock Up Cafe
+                            </a>
+                            <a class="nav-link" href="StockDown.html">
+                                <div class="sb-nav-link-icon"></i></div>
+                                Stock Down Cafe
+                            </a>
+                        </div>
+                        
+                    </div>
+                    <div class="buttonLogout justify-content-lg-center d-flex m-3 p-4">
+                        <button type="button" class="btn btn-danger">Logout</button>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Barista
+                    </div>
+                </nav>
+            </div>
+            
+            <div id="layoutSidenav_content">
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Bill’s</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                         
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Understood</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <main>
+                    <!-- isi form -->
+                    <div class="container">
+                        <div class="container-fluid">
+                            <div class="container">
+                                <div class="row">
+                                    <h1 class="mt-4">Edit Item's</h1>
+                                    <div class="col-md-15 py-2">
+                                        <form>
+                                            <div class="mb-3">
+                                              <label for="InputName" class="form-label">Name Barang</label>
+                                              <input type="text" class="form-control" id="InputName">
+                                            </div>
+                                            <div class="mb-3">
+                                              <label for="InputName" class="form-label">Stock Tersedia(pcs)</label>
+                                              <input type="text" class="form-control" id="InputName">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="InputName" class="form-label">Satuan</label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option selected>Pilih satuan</option>
+                                                    <option value="1">KG</option>
+                                                    <option value="2">BOX</option>
+                                                  </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="InputName" class="form-label">Expired</label>
+                                                <div class="input-group date" id="datepicker">
+                                                    <input type="text" class="form-control">
+                                                    <span class="input-group-append">
+                                                        <span class="input-group-text bg-white d-block">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="InputName" class="form-label">Last Update</label>
+                                                <div class="input-group date" id="datepicker">
+                                                    <input type="text" class="form-control">
+                                                    <span class="input-group-append">
+                                                        <span class="input-group-text bg-white d-block">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                          </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function() {
+                $('#datepicker').datepicker();
+            });
+        </script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
+    </body>
+</html>

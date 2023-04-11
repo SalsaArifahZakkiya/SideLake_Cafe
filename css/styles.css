@@ -11767,4 +11767,6 @@ body {
 .radio__input:checked + .radio__label{
   background: rgba(217, 217, 217, 1);
 }
-
+.input-group-append {
+  cursor: pointer;
+}
