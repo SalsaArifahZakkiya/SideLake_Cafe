@@ -516,6 +516,9 @@
                                     </div>
                                     <!-- end drink 8 -->
                                 </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-pagination"></div>
                                 <!-- end row -->
                             </div>
                             <!-- end container -->
@@ -539,16 +542,20 @@
 
         <!-- Initialize Swiper -->
         <script>
-            var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 3,
-            grid: {
-                rows: 1,
-            },
-            spaceBetween: 30,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
+            var swiper = new Swiper(".mySwiper", {    
+                slidesPerView: "3",
+                grid: {
+                    rows: 1,
+                },
+                spaceBetween: 30,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                navigation : {
+                    nextEl : ".swiper-button-next",
+                    prevEl : ".swiper-button-prev"
+                }
             });
         </script>
     </body>
