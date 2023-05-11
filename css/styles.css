@@ -633,6 +633,7 @@ progress {
 .container-lg,
 .container-md,
 .container-sm {
+  height: 100%;
   width: 100%;
   padding-right: var(--bs-gutter-x, 0.75rem);
   padding-left: var(--bs-gutter-x, 0.75rem);
@@ -11720,6 +11721,10 @@ body {
 
   color: #47362C;
 }
+.card-wrapper{
+  column-gap: 8px;
+  gap: 20px;
+}
 .text-harga{
   font-style: normal;
   font-weight: 400;
@@ -11761,7 +11766,7 @@ body {
 }
 
 .radio__label:not(:last-of-type){
-  border-right: 1px rgba(0, 0, 0, 1);;
+  border-right: 1px rgba(0, 0, 0, 1);
 }
 
 .radio__input:checked + .radio__label{
@@ -11769,4 +11774,36 @@ body {
 }
 .input-group-append {
   cursor: pointer;
+}
+
+/* keranjang */
+.gambar_qr{
+  width:100px;
+  height: 100px;
+  margin: auto;
+  padding: auto;
+}
+.payment{
+  margin: 15px;
+  padding: 5px;
+ }
+
+/* swiper */
+.swiper {
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  height: calc((100% - 30px) / 2) !important;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,0 +1,12 @@
+{
+  "name": "sidelake_cafe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev" : "python3 -m http.server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
