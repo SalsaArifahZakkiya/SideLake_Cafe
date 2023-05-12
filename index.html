@@ -123,6 +123,8 @@
                                     <input type="text" name="customer" id="customer" placeholder="Customer" style="width: 100%; border-radius: 5px; border: none; padding: 5px;">
                                     <br><br><br>
                                     <div id="items"></div>
+                                    <hr>
+                                    <div id="total"></div>
                                 </div>
                             </div>
                         </div>
@@ -142,37 +144,37 @@
         <script src="js/datatables-simple-demo.js"></script>
         <script>
             let onData = [{
-                    "name" : "expresso",
-                    "price" : 10000
+                    "menu_name" : "expresso",
+                    "menu_price" : 10000
                 },];
             var data = [
                 {
-                    "name" : "expresso",
-                    "price" : 10000
+                    "menu_name" : "expresso",
+                    "menu_price" : 10000
                 },
                 {
-                    "name" : "expresso",
-                    "price" : 10000
+                    "menu_name" : "expresso",
+                    "menu_price" : 10000
                 },
                 {
-                    "name" : "expresso",
-                    "price" : 10000
+                    "menu_name" : "expresso",
+                    "menu_price" : 10000
                 },
                 {
-                    "name" : "expresso",
-                    "price" : 10000
+                    "menu_name" : "expresso",
+                    "menu_price" : 10000
                 },
                 {
-                    "name" : "expresso",
-                    "price" : 10000
+                    "menu_name" : "expresso",
+                    "menu_price" : 10000
                 },
                 {
-                    "name" : "expresso",
-                    "price" : 10000
+                    "menu_name" : "expresso",
+                    "menu_price" : 10000
                 },
                 {
-                    "name" : "wow",
-                    "price" : 10000
+                    "menu_name" : "wow",
+                    "menu_price" : 10000
                 },
             ]
 
@@ -180,7 +182,7 @@
                 for (let index = 0; index < dataCheck.length; index++) {
                     const element = dataCheck[index];
 
-                    if (element.name === sim.name) {
+                    if (element.menu_name === sim.menu_name) {
                         return true;
                     }
                 }
@@ -192,38 +194,116 @@
                 $("<button>", {
                     class : "btn margin-item",
                     id : `${i}item`,
-                    html : `${element.name}`
+                    html : `${element.menu_name}`
                 }).click((e) => {
                     if (similiar(onData, element)) {
                         console.log("exst");
                         $(`#${i}item`).removeClass("btn-primary")
-                        $(`#order-${element.name}`).remove()
+                        $(`#order-${element.menu_name}`).remove()
+                        $("#total-price").remove()
+                        $("<div>", {
+                class : "row",
+                id : "total-price",
+                html : `<div class="row">
+                                            <div class="col"><h5>Total's</h5></div>
+                                            <div class="col"><p>${totalHarga(onData)}</p></div>
+                                        </div>`
+            }).appendTo($("#total"))
                         onData.pop(element)
                     }else{
                         console.log("none");
                         onData.push(element)
                         $(`#${i}item`).addClass("btn-primary")
-                        $("<a>", {
-                            class : "btn btn-primary",
-                            id : `order-${element.name}`,
-                            html : element.name
-                        }).click(() => {
-                            $(`#order-${element.name}`).remove()
-                            $(`#${i}item`).removeClass("btn-primary")
+                        $("<div>", {
+                            class : "row",
+                            id : `order-${element.menu_name}`,
+                            html : `<div class="row">
+                                            <div class="col"><h5>${element.menu_name}</h5></div>
+                                            <div class="col"><p>${element.menu_price}</p></div>
+                                        </div>`
+                        }).click((e) => {
+                            e.preventDefault()
+                            $(`#order-${element.menu_name}`).remove()
+                            $("#total-price").remove()
+                        $("<div>", {
+                class : "row",
+                id : "total-price",
+                html : `<div class="row">
+                                            <div class="col"><h5>Total's</h5></div>
+                                            <div class="col"><p>${totalHarga(onData)}</p></div>
+                                        </div>`
+            }).appendTo($("#total"))
                         }).appendTo($("#items"))
+                        $("#total-price").remove()
+                        $("<div>", {
+                class : "row",
+                id : "total-price",
+                html : `<div class="row">
+                                            <div class="col"><h5>Total's</h5></div>
+                                            <div class="col"><p>${totalHarga(onData)}</p></div>
+                                        </div>`
+            }).appendTo($("#total"))
                     }
+
+                    $("#total-price").remove()
+                        $("<div>", {
+                class : "row",
+                id : "total-price",
+                html : `<div class="row">
+                                            <div class="col"><h5>Total's</h5></div>
+                                            <div class="col"><p>${totalHarga(onData)}</p></div>
+                                        </div>`
+            }).appendTo($("#total"))
 
                     console.log(onData);
                     
                 }).appendTo($("#menu-items"))
             })
 
+            const totalHarga = (dataList) => {
+                let total = 0;
+                
+                if (dataList.length == 0) {
+                    return 0
+                }
+
+                dataList.map((val) => {
+                    total += val.menu_price;
+                })
+
+                return total
+            }
+
             onData.map((element, i) => {
-                $("<a>", {
-                    class : "btn btn-primary",
-                    id : `order-${element.name}`,
-                    html : element.name
+                $("<div>", {
+                    class : "row",
+                    id : `order-${element.menu_name}`,
+                    html : `<div class="row">
+                                            <div class="col"><h5>${element.menu_name}</h5></div>
+                                            <div class="col"><p>${element.menu_price}</p></div>
+                                        </div>`
+                }).click((e) => {
+                    e.preventDefault()
+                    $(`#order-${element.menu_name}`).remove()
                 }).appendTo($("#items"))
+            })
+
+            $("<div>", {
+                class : "row",
+                id : "total-price",
+                html : `<div class="row">
+                                            <div class="col"><h5>Total's</h5></div>
+                                            <div class="col"><p>${totalHarga(onData)}</p></div>
+                                        </div>`
+            }).appendTo($("#total"))
+
+            $.ajax({
+                url : "http://0.0.0.0:3000/api/v1/menu",
+                method : "GET",
+                success: (data) => {
+                    console.log(data);
+                },
+                
             })
 
             
