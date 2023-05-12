@@ -16,10 +16,11 @@
             .margin-item{
                 margin: 10px;
                 padding: 10px;
+                border-radius: 10px;
             }       
             .selected-item{
-                border-radius: 10px;
-                border-color: red;
+                border-width: 5px;
+                border-color: brown;
             }
         </style>
 
@@ -125,8 +126,35 @@
                                     <div id="items"></div>
                                     <hr>
                                     <div id="total"></div>
+                                    <br><br><br>
+                                    <h5>Payment Methode :</h5>
+                                    <div>
+                                        <label for="payment">
+                                            <div class="">
+                                                <input type="radio" name="payment" value="Qrcode">
+                                                <img src="assets/img/QR.jpeg" alt="jpeg" class="gambar_qr">
+                                                <span class="checkmark"></span>
+                                                <p>QR Code</p>
+                                            </div>
+                                        </label>
+                                        <label for="payment">
+                                            <div class="">
+                                                <input type="radio" name="payment" value="Cash">
+                                                <img src="assets/img/moneyyy.png" alt="jpeg" class="gambar_qr">
+                                                <span class="checkmark"></span>
+                                                <p>Cash</p>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <center>
+                                        <Button class="btn btn-primary" id="order-btn">
+                                            Order
+                                        </Button>
+                                    </center>
+                                    <br>
                                 </div>
                             </div>
+                            <br>
                         </div>
                         <!-- end layout -->
                     </div>
@@ -141,147 +169,23 @@
         <script src="assets/demo/chart-bar-demo.js"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="js/datatables-simple-demo.js"></script>
+        <script src="./js/utils.js"></script>
         <script>
-            let onData = [{
-                    "menu_name" : "expresso",
-                    "menu_price" : 10000
-                },];
-            var data = [
-                {
-                    "menu_name" : "expresso",
-                    "menu_price" : 10000
-                },
-                {
-                    "menu_name" : "expresso",
-                    "menu_price" : 10000
-                },
-                {
-                    "menu_name" : "expresso",
-                    "menu_price" : 10000
-                },
-                {
-                    "menu_name" : "expresso",
-                    "menu_price" : 10000
-                },
-                {
-                    "menu_name" : "expresso",
-                    "menu_price" : 10000
-                },
-                {
-                    "menu_name" : "expresso",
-                    "menu_price" : 10000
-                },
-                {
-                    "menu_name" : "wow",
-                    "menu_price" : 10000
-                },
-            ]
-
-            const similiar = (dataCheck, sim) => {
-                for (let index = 0; index < dataCheck.length; index++) {
-                    const element = dataCheck[index];
-
-                    if (element.menu_name === sim.menu_name) {
-                        return true;
-                    }
-                }
-
-                return false;
-            }
-
-            data.map((element, i) => {
-                $("<button>", {
-                    class : "btn margin-item",
-                    id : `${i}item`,
-                    html : `${element.menu_name}`
-                }).click((e) => {
-                    if (similiar(onData, element)) {
-                        console.log("exst");
-                        $(`#${i}item`).removeClass("btn-primary")
-                        $(`#order-${element.menu_name}`).remove()
-                        $("#total-price").remove()
-                        $("<div>", {
-                class : "row",
-                id : "total-price",
-                html : `<div class="row">
-                                            <div class="col"><h5>Total's</h5></div>
-                                            <div class="col"><p>${totalHarga(onData)}</p></div>
-                                        </div>`
-            }).appendTo($("#total"))
-                        onData.pop(element)
-                    }else{
-                        console.log("none");
-                        onData.push(element)
-                        $(`#${i}item`).addClass("btn-primary")
-                        $("<div>", {
-                            class : "row",
-                            id : `order-${element.menu_name}`,
-                            html : `<div class="row">
-                                            <div class="col"><h5>${element.menu_name}</h5></div>
-                                            <div class="col"><p>${element.menu_price}</p></div>
-                                        </div>`
-                        }).click((e) => {
-                            e.preventDefault()
-                            $(`#order-${element.menu_name}`).remove()
-                            $("#total-price").remove()
-                        $("<div>", {
-                class : "row",
-                id : "total-price",
-                html : `<div class="row">
-                                            <div class="col"><h5>Total's</h5></div>
-                                            <div class="col"><p>${totalHarga(onData)}</p></div>
-                                        </div>`
-            }).appendTo($("#total"))
-                        }).appendTo($("#items"))
-                        $("#total-price").remove()
-                        $("<div>", {
-                class : "row",
-                id : "total-price",
-                html : `<div class="row">
-                                            <div class="col"><h5>Total's</h5></div>
-                                            <div class="col"><p>${totalHarga(onData)}</p></div>
-                                        </div>`
-            }).appendTo($("#total"))
-                    }
-
-                    $("#total-price").remove()
-                        $("<div>", {
-                class : "row",
-                id : "total-price",
-                html : `<div class="row">
-                                            <div class="col"><h5>Total's</h5></div>
-                                            <div class="col"><p>${totalHarga(onData)}</p></div>
-                                        </div>`
-            }).appendTo($("#total"))
-
-                    console.log(onData);
-                    
-                }).appendTo($("#menu-items"))
+            const formatter = Intl.NumberFormat("id-ID", {
+                style : "currency",
+                currency : "IDR"
             })
-
-            const totalHarga = (dataList) => {
-                let total = 0;
-                
-                if (dataList.length == 0) {
-                    return 0
-                }
-
-                dataList.map((val) => {
-                    total += val.menu_price;
-                })
-
-                return total
-            }
+            let onData = [];
+            let data = [];
 
             onData.map((element, i) => {
                 $("<div>", {
                     class : "row",
                     id : `order-${element.menu_name}`,
                     html : `<div class="row">
-                                            <div class="col"><h5>${element.menu_name}</h5></div>
-                                            <div class="col"><p>${element.menu_price}</p></div>
-                                        </div>`
+                                <div class="col"><h5>${element.menu_name}</h5></div>
+                                <div class="col"><p>${formatter.format(element.menu_price)}</p></div>
+                            </div>`
                 }).click((e) => {
                     e.preventDefault()
                     $(`#order-${element.menu_name}`).remove()
@@ -292,21 +196,80 @@
                 class : "row",
                 id : "total-price",
                 html : `<div class="row">
-                                            <div class="col"><h5>Total's</h5></div>
-                                            <div class="col"><p>${totalHarga(onData)}</p></div>
-                                        </div>`
+                                <div class="col"><h5>Total's</h5></div>
+                                <div class="col"><p>${formatter.format(totalHarga(onData))}</p></div>
+                        </div>`
             }).appendTo($("#total"))
+
+            $("#order-btn").click((e) => {
+                e.preventDefault()
+
+                var check = $('input[name="payment"]:checked').val()
+                var customer_name = $("#customer").val()
+
+                $.ajax({
+                    url : "http://localhost:3000/api/v1/order",
+                    method : "POST",
+                    data : {
+                        "orderCustomer" : customer_name,
+                        "orderItem" : JSON.stringify(onData),
+                        "orderPayment" : check
+                    }
+                })
+            })
 
             $.ajax({
                 url : "http://0.0.0.0:3000/api/v1/menu",
                 method : "GET",
-                success: (data) => {
-                    console.log(data);
+                success: (getData) => {
+                    data = getData.data;
+                    
+                    data.map((element, i) => {
+                        $("<button>", {
+                            class : "btn margin-item btn-secondary",
+                            id : `${i}item`,
+                            html : `<div class="row">
+                                        <div class="col"><p>${element.menu_name}</p></div>
+                                        <div class="col"><p>${priceInK(element.menu_price)}</p></div>
+                                    </div>`
+                        }).click((e) => {
+                            if (similiar(onData, element)) {
+                                console.log("exst");
+                                $(`#${i}item`).removeClass("selected-item")
+                                $(`#order-${i}`).remove()
+                                onData.pop(element)
+                            }else{
+                                console.log("none");
+                                onData.push(element)
+                                $(`#${i}item`).addClass("selected-item")
+                                $("<div>", {
+                                    class : "row",
+                                    id : `order-${i}`,
+                                    html : `<div class="row">
+                                                <div class="col"><h5>${element.menu_name}</h5></div>
+                                                <div class="col"><p>${formatter.format(element.menu_price)}</p></div>
+                                            </div>`
+                                }).click((e) => {
+                                    e.preventDefault()
+                                    $(`#order-${i}`).remove()
+                                }).appendTo($("#items"))
+                            }
+
+                            $("#total-price").remove()
+                            $("<div>", {
+                                class : "row",
+                                id : "total-price",
+                                html : `<div class="row">
+                                            <div class="col"><h5>Total's</h5></div>
+                                            <div class="col"><p>${formatter.format(totalHarga(onData))}</p></div>
+                                        </div>`
+                                }).appendTo($("#total"))
+                                console.log(onData);
+                        }).appendTo($("#menu-items"))
+                    })
                 },
                 
-            })
-
-            
+            })     
         </script>
     </body>
 </html>
