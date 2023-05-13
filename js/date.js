@@ -1,4 +1,4 @@
 $( function() {
-    $( "#date" ).datepicker();
-    $( "#date2" ).datepicker();
+    $( "#dateExpired" ).datepicker();
+    $( "#dateLastUpdate" ).datepicker();
 });

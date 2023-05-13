@@ -18,7 +18,9 @@
         <link href="css/styles.css" rel="stylesheet"/>
         <!-- button -->
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        
+        <script>
+ 
+        </script>        
 
 
     </head>
@@ -90,6 +92,9 @@
             
             <div id="layoutSidenav_content">
                 <main>
+                    <div id="dialog">
+                        <h2>Tambah Item Berhasil</h2>
+                    </div>
                     <!-- isi form -->
                     <div class="container">
                         <div class="container-fluid">
@@ -108,24 +113,24 @@
                                                 <form>
                                                     <div class="mb-3">
                                                       <label for="InputName" class="form-label">Name Barang</label>
-                                                      <input type="text" class="form-control" id="InputName">
+                                                      <input type="text" class="form-control" id="namaBarang">
                                                     </div>
                                                     <div class="mb-3">
                                                       <label for="InputName" class="form-label">Stock Tersedia(pcs)</label>
-                                                      <input type="text" class="form-control" id="InputName">
+                                                      <input type="number" class="form-control" id="stockTersedia">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="InputName" class="form-label">Satuan</label>
-                                                        <select class="form-select" aria-label="Default select example">
+                                                        <select class="form-select" aria-label="Default select example" id="satuan">
                                                             <option selected>Pilih satuan</option>
-                                                            <option value="1">KG</option>
-                                                            <option value="2">BOX</option>
+                                                            <option value="KG">KG</option>
+                                                            <option value="BOX">BOX</option>
                                                           </select>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="InputName" class="form-label">Expired</label>
                                                         <div class="input-group date" id="datepicker">
-                                                            <input type="text" class="form-control" id="date">
+                                                            <input type="text" class="form-control" id="dateExpired">
                                                             <span class="input-group-append">
                                                                 <span class="input-group-text bg-white d-block">
                                                                     <i class="fa fa-calendar"></i>
@@ -136,7 +141,7 @@
                                                     <div class="mb-3">
                                                         <label for="InputName" class="form-label">Last Update </label>
                                                         <div class="input-group date" id="datepicker">
-                                                            <input type="text" class="form-control" id="date2">
+                                                            <input type="text" class="form-control" id="dateLastUpdate">
                                                             <span class="input-group-append">
                                                                 <span class="input-group-text bg-white d-block">
                                                                     <i class="fa fa-calendar"></i>
@@ -144,9 +149,11 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <div class="text-end">
-                                                        <button type="submit" class="btn btn-success">Submit</button>
-                                                    </div>
+                                                    <center>
+                                                        <button class="btn btn-success" id="addItem">
+                                                            Add
+                                                        </button>
+                                                    </center>
                                                   </form>
                                             </div>
                                         </div>
@@ -160,5 +167,49 @@
         </div>
         <script src="js/date.js"></script>
         <script src="js/scripts.js"></script>
+        <script>
+            var dialog;
+
+            dialog = $("#dialog").dialog({
+                autoOpen : false,
+                height : 500,
+                witdh : 350,
+                modal : true,
+                buttons : {
+                    Cancel : () => {
+                        dialog.dialog("close")
+                    }
+                }
+            })
+
+            $("#addItem").click((e) => {
+                e.preventDefault()
+
+                const namaBarang = $("#namaBarang").val()
+                const stockTersedia = $("#stockTersedia").val()
+                const satuan = $("#satuan").val()
+                const dateExpired = $("#dateExpired").val()
+                const dateLastUpdate = $("#dateLastUpdate").val()
+
+                $.ajax({
+                    url : "http://localhost:3000/api/v1/item/stockup",
+                    method : "POST",
+                    data : {
+                        "itemName" : namaBarang,
+                        "itemStock" : stockTersedia,
+                        "itemSatuan" : satuan,
+                        "itemExpired" : dateExpired,
+                    },
+                    success : (data) => {
+                        console.log(data);
+                        
+                    },
+                    error : (err) => {
+                        console.log(err);
+                    }
+                })
+                dialog.dialog("open")
+            })
+        </script>
     </body>
 </html>
