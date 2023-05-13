@@ -103,11 +103,10 @@
                         <h5 class="modal-title" id="exampleModalLabel">Hapus Produk</h5>
                         </div>
                         <div class="modal-body">
-                            Apakah ingin menghapus Produk ini?
+                            Produk Terhapus
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Iya</button>
+                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                     </div>
@@ -149,7 +148,6 @@
                                         </tr>
                                     </thead>
                                     <tbody id="table-body">
-                                       
                                     </tbody>
                                 </table>
                             </div>
@@ -173,13 +171,41 @@
                                     <td>${val.item_satuan}</td>
                                     <td>${val.item_expired}</td>
                                     <td>${val.item_lastupdate}</td>
-                                    <td><a class="btn btn-secondary" href="formstock.html" role="button"><i class="fa-solid fa-pen-to-square" style="color: #f7f7f8;"></i></a></td>
                                     <td>
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <form action="formstock.php" method="get">
+                                            <input type="text" name="item_id" id="item_id" value="${val.item_id}" hidden>
+                                            <button type="submit" class="btn btn-secondary">
+                                                <i class="fa-solid fa-pen-to-square" style="color: #f7f7f8;"></i>
+                                            </button>
+                                       </form>
+                                    </td>
+                                    <td>
+                                        <button type="button" id="del${val.item_id}" class="btn btn-danger">
                                             <i class="fa-solid fa-trash" style="color: #f9fafa;"></i>
                                         </button>
                                     </td>`
                         }).appendTo($("#table-body"))
+
+                        $(`#del${val.item_id}`).click((e) => {
+                            e.preventDefault()
+
+                            console.log("CCC");
+
+                            $.ajax({
+                                url : `http://localhost:3000/api/v1/item/stockup/delete`,
+                                method : "POST",
+                                data : {
+                                    "itemId" : val.item_id
+                                },
+                                success : (data) => {
+                                    console.log(data);
+                                },
+                                error : (err) => {
+                                    console.log(err);
+                                }
+                            })
+                        })
+                        console.log(val);
                     })
                 }
             })

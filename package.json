@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev" : "python3 -m http.server"
+    "http" : "python3 -m http.server",
+    "php" : "php -S 127.0.0.1:8000 -t ."
   },
   "keywords": [],
   "author": "",

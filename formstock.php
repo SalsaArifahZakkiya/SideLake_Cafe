@@ -65,7 +65,7 @@
                                 <div class="sb-nav-link-icon"></div>
                                 Product Cafe
                             </a>
-                            <a class="nav-link" href="StockUp.html">
+                            <a class="nav-link" href="StockUp.php">
                                 <div class="sb-nav-link-icon"></i></div>
                                 Stock Up Cafe
                             </a>
@@ -94,36 +94,39 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="text-start mt-3 p-lg-2">
-                                        <a href="javascript:window.history.back();" style="color: black; text-decoration: none; font-size: large;"> <i class="fa-solid fa-arrow-left"></i> &nbspBack </a>
+                                        <a href="StockUp.php" style="color: black; text-decoration: none; font-size: large;"> <i class="fa-solid fa-arrow-left"></i> &nbspBack </a>
                                     </div>
-                                    
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="col">
                                                 <h1>Edit Item's</h1>
                                             </div>
+                                            <div id="dialog">
+                                                <h2>Tambah Item Berhasil</h2>
+                                            </div>
                                             <div class="col-md-15 py-2">
                                                 <form>
+                                                    <input type="text" name="inputId" id="inputId" value="<?php echo $_GET["item_id"] ;?>" hidden>
                                                     <div class="mb-3">
                                                       <label for="InputName" class="form-label">Name Barang</label>
-                                                      <input type="text" class="form-control" id="InputName">
+                                                      <input type="text" class="form-control" id="namaBarang">
                                                     </div>
                                                     <div class="mb-3">
                                                       <label for="InputName" class="form-label">Stock Tersedia(pcs)</label>
-                                                      <input type="text" class="form-control" id="InputName">
+                                                      <input type="number" class="form-control" id="stockTersedia">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="InputName" class="form-label">Satuan</label>
-                                                        <select class="form-select" aria-label="Default select example">
+                                                        <select class="form-select" aria-label="Default select example" id="satuan">
                                                             <option selected>Pilih satuan</option>
-                                                            <option value="1">KG</option>
-                                                            <option value="2">BOX</option>
+                                                            <option value="KG">KG</option>
+                                                            <option value="BOX">BOX</option>
                                                           </select>
                                                     </div>
-                                                    <div class="mb-3">
+                                                    <div lass="mb-3">
                                                         <label for="InputName" class="form-label">Expired</label>
                                                         <div class="input-group date" id="datepicker">
-                                                            <input type="text" class="form-control" id="date">
+                                                            <input type="text" class="form-control" id="dateExpired">
                                                             <span class="input-group-append">
                                                                 <span class="input-group-text bg-white d-block">
                                                                     <i class="fa fa-calendar"></i>
@@ -134,7 +137,7 @@
                                                     <div class="mb-3">
                                                         <label for="InputName" class="form-label">Last Update </label>
                                                         <div class="input-group date" id="datepicker">
-                                                            <input type="text" class="form-control" id="date2">
+                                                            <input type="text" class="form-control" id="dateLastUpdate">
                                                             <span class="input-group-append">
                                                                 <span class="input-group-text bg-white d-block">
                                                                     <i class="fa fa-calendar"></i>
@@ -142,9 +145,11 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <div class="text-end">
-                                                        <button type="submit" class="btn btn-success">Submit</button>
-                                                    </div>
+                                                    <center>
+                                                        <button class="btn btn-success" id="updateItem">
+                                                            update
+                                                        </button>
+                                                    </center>
                                                   </form>
                                             </div>
                                         </div>
@@ -158,5 +163,93 @@
         </div>
         <script src="js/date.js"></script>
         <script src="js/scripts.js"></script>
+        <script>
+            $(document).ready(() => {
+                var dialog;
+
+                dialog = $("#dialog").dialog({
+                    autoOpen : false,
+                    height : 500,
+                    witdh : 350,
+                    modal : true,
+                    buttons : {
+                        Cancel : () => {
+                            dialog.dialog("close")
+                        }
+                    }
+                })
+            })
+
+            let awalStock;
+
+            const getLastStock = (awal, akhir) => {
+                let endVal = Number.parseInt(awal) - Number.parseInt(akhir);
+
+                if (endVal <= 0) {
+                    return akhir
+                }
+
+                return endVal
+            }
+
+            $.ajax({
+                url : `http://localhost:3000/api/v1/item/stockup/${$("#inputId").val()}`,
+                method : "GET",
+                success : (data) => {
+                    data.data.map((val, i) => {
+                        awalStock = val.item_stock;
+                        $("#namaBarang").val(val.item_name)
+                        $("#stockTersedia").val(val.item_stock)
+                        $("#satuan").val(val.item_satuan)
+                        $("#dateExpired").val(val.item_expired)
+                        $("#dateLastUpdate").val(val.item_lastupdate)
+                    })
+                }
+            })
+
+            $("#updateItem").click((e) => {
+                e.preventDefault()
+
+                const itemStockOut = Number.parseInt(getLastStock(awalStock, $("#stockTersedia").val()))
+
+                $.ajax({
+                    url : "http://localhost:3000/api/v1/item/stockup/post",
+                    method : "POST",
+                    data : {
+                        itemId : $("#inputId").val(),
+                        itemName : $("#namaBarang").val(),
+                        itemStock : $("#stockTersedia").val(),
+                        itemSatuan : $("#satuan").val(),
+                        itemExpired : $("#dateExpired").val(),
+                        itemLastupdate : $("#dateLastUpdate").val(),
+                    },
+                    success : (data) => {
+                        console.log(data);
+                    },
+                    error : (err) => {
+                        console.log(err);
+                    }
+                })
+
+                $.ajax({
+                    url : "http://localhost:3000/api/v1/item/stockdown/",
+                    method : "POST",
+                    data : {
+                        itemName : $("#namaBarang").val(),
+                        itemStock : $("#stockTersedia").val(),
+                        itemExpired : $("#dateExpired").val(),
+                        itemSatuan : $("#satuan").val(),
+                        itemLastupdate : $("#dateLastUpdate").val(),
+                        itemStockOut : itemStockOut
+                    },
+                    success : (data) => {
+                        console.log(data);
+                    },
+                    error : (err) => {
+                        console.log(err);
+                    }
+                })
+            })
+        </script>
     </body>
 </html>

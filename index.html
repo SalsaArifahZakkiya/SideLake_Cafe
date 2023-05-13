@@ -70,7 +70,7 @@
                                 <div class="sb-nav-link-icon"></div>
                                 Product Cafe
                             </a>
-                            <a class="nav-link" href="StockUp.html">
+                            <a class="nav-link" href="StockUp.php">
                                 <div class="sb-nav-link-icon"></i></div>
                                 Stock Up Cafe
                             </a>
@@ -221,6 +221,8 @@
             $.ajax({
                 url : "http://0.0.0.0:3000/api/v1/menu",
                 method : "GET",
+                async : true,
+                crossDomain : true,
                 success: (getData) => {
                     data = getData.data;
                     

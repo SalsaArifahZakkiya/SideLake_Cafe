@@ -70,7 +70,7 @@
                                 <div class="sb-nav-link-icon"></i></div>
                                 Product Cafe
                             </a>
-                            <a class="nav-link" href="StockUp.html">
+                            <a class="nav-link" href="StockUp.php">
                                 <div class="sb-nav-link-icon"></i></div>
                                 Stock Up Cafe
                             </a>
@@ -153,6 +153,7 @@
                 </main>
             </div>
         </div>
+        <script src="js/scripts.js"></script>
         <script>
             $(document).ready( function () {
                 $('#example').DataTable({
@@ -161,7 +162,7 @@
             });
 
             $.ajax({
-                url : "http://localhost:3000/api/v1/item/stockup",
+                url : "http://localhost:3000/api/v1/item/stockdown",
                 method : "GET",
                 success: (data) => {
                     data.data.map((val, i) => {
@@ -169,15 +170,15 @@
                             html : `<td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
                                     <td>${i + 1}</td>
                                     <td>${val.item_name}</td>
-                                    <td>${val.item_stock}</td>
+                                    <td>${val.item_stockout}</td>
                                     <td>${val.item_satuan}</td>
-                                    <td>21/01/24</td>
-                                    <td>21/01/24</td>`
+                                    <td>${val.item_expired}</td>
+                                    <td>${val.item_lastupdate}</td>`
                         }).appendTo($("#table-body"))
                     })
+                    console.log(data.data);
                 }
-            })        </script>
-        <script src="js/scripts.js"></script>
-        
+            })        
+        </script>        
     </body>
 </html>
