@@ -74,7 +74,7 @@
                                 <div class="sb-nav-link-icon"></i></div>
                                 Product Cafe
                             </a>
-                            <a class="nav-link" href="StockUp.html">
+                            <a class="nav-link" href="StockUp.php">
                                 <div class="sb-nav-link-icon"></i></div>
                                 Stock Up Cafe
                             </a>
@@ -159,56 +159,58 @@
         <script src="js/table.js"></script>
         <script src="js/scripts.js"></script>
         <script>
-            $.ajax({
-                url : "http://localhost:3000/api/v1/item/stockup",
-                method : "GET",
-                success: (data) => {
-                    data.data.map((val, i) => {
-                        $("<tr>", {
-                            html : `<td>${i + 1} </td>
-                                    <td>${val.item_name}</td>
-                                    <td>${val.item_stock}</td>
-                                    <td>${val.item_satuan}</td>
-                                    <td>${val.item_expired}</td>
-                                    <td>${val.item_lastupdate}</td>
-                                    <td>
-                                        <form action="formstock.php" method="get">
-                                            <input type="text" name="item_id" id="item_id" value="${val.item_id}" hidden>
-                                            <button type="submit" class="btn btn-secondary">
-                                                <i class="fa-solid fa-pen-to-square" style="color: #f7f7f8;"></i>
+            const getDataTable = () => {
+                $.ajax({
+                    url : "http://localhost:3000/api/v1/item/stockup",
+                    method : "GET",
+                    success: (data) => {
+                        data.data.map((val, i) => {
+                            $("<tr>", {
+                                html : `<td>${i + 1} </td>
+                                        <td>${val.item_name}</td>
+                                        <td>${val.item_stock}</td>
+                                        <td>${val.item_satuan}</td>
+                                        <td>${val.item_expired}</td>
+                                        <td>${val.item_lastupdate}</td>
+                                        <td>
+                                            <form action="formstock.php" method="get">
+                                                <input type="text" name="item_id" id="item_id" value="${val.item_id}" hidden>
+                                                <button type="submit" class="btn btn-secondary">
+                                                    <i class="fa-solid fa-pen-to-square" style="color: #f7f7f8;"></i>
+                                                </button>
+                                        </form>
+                                        </td>
+                                        <td>
+                                            <button type="button" id="del${val.item_id}" class="btn btn-danger">
+                                                <i class="fa-solid fa-trash" style="color: #f9fafa;"></i>
                                             </button>
-                                       </form>
-                                    </td>
-                                    <td>
-                                        <button type="button" id="del${val.item_id}" class="btn btn-danger">
-                                            <i class="fa-solid fa-trash" style="color: #f9fafa;"></i>
-                                        </button>
-                                    </td>`
-                        }).appendTo($("#table-body"))
+                                        </td>`
+                            }).appendTo($("#table-body"))
 
-                        $(`#del${val.item_id}`).click((e) => {
-                            e.preventDefault()
+                            $(`#del${val.item_id}`).click((e) => {
+                                e.preventDefault()
 
-                            console.log("CCC");
-
-                            $.ajax({
-                                url : `http://localhost:3000/api/v1/item/stockup/delete`,
-                                method : "POST",
-                                data : {
-                                    "itemId" : val.item_id
-                                },
-                                success : (data) => {
-                                    console.log(data);
-                                },
-                                error : (err) => {
-                                    console.log(err);
-                                }
+                                $.ajax({
+                                    url : `http://localhost:3000/api/v1/item/stockup/delete`,
+                                    method : "POST",
+                                    data : {
+                                        "itemId" : val.item_id
+                                    },
+                                    success : (data) => {
+                                        location.reload()
+                                    },
+                                    error : (err) => {
+                                        console.log(err);
+                                    }
+                                })
                             })
+                            console.log(val);
                         })
-                        console.log(val);
-                    })
-                }
-            })
+                    }
+                })
+            }
+
+            getDataTable()
         </script>
         
     </body>

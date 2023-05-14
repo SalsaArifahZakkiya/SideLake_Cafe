@@ -164,20 +164,18 @@
         <script src="js/date.js"></script>
         <script src="js/scripts.js"></script>
         <script>
-            $(document).ready(() => {
-                var dialog;
-
-                dialog = $("#dialog").dialog({
-                    autoOpen : false,
-                    height : 500,
-                    witdh : 350,
-                    modal : true,
-                    buttons : {
-                        Cancel : () => {
-                            dialog.dialog("close")
-                        }
+            var dialog;
+            dialog = $("#dialog").dialog({
+                autoOpen : false,
+                height : 500,
+                witdh : 350,
+                modal : true,
+                buttons : {
+                    Cancel : () => {
+                        dialog.dialog("close")
+                        location.replace("StockUp.php")
                     }
-                })
+                }
             })
 
             let awalStock;
@@ -185,6 +183,10 @@
             const getLastStock = (awal, akhir) => {
                 let endVal = Number.parseInt(awal) - Number.parseInt(akhir);
 
+                if (Number.parseInt(akhir) == 0) {
+                    return awal
+                }
+                
                 if (endVal <= 0) {
                     return akhir
                 }
@@ -249,6 +251,8 @@
                         console.log(err);
                     }
                 })
+
+                dialog.dialog("open")
             })
         </script>
     </body>
