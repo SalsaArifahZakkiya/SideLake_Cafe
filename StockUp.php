@@ -70,7 +70,7 @@
                                 <div class="sb-nav-link-icon"></i></div>
                                 Menu Cafe
                             </a>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="product.html">
                                 <div class="sb-nav-link-icon"></i></div>
                                 Product Cafe
                             </a>
