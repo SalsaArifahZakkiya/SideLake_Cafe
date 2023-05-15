@@ -7,6 +7,10 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Menu Cafe - Side Lake Cafe</title>
+        <!-- jquery -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -110,6 +114,12 @@
                     </div>
                 </div>
                 <main>
+                    <div id="dialog">
+                        <h2>Order Berhasil</h2>
+                    </div>
+                    <div id="dialog1">
+                        <h2>Nama Customer Tidak Boleh Kosong</h2>
+                    </div>
                     <!-- Layout menu -->
                     <div class="container-fluid">
                         <div class="container">
@@ -168,7 +178,6 @@
         <!-- <script src="assets/demo/chart-area-demo.js"></script>
         <script src="assets/demo/chart-bar-demo.js"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="./js/utils.js"></script>
         <script>
             const formatter = Intl.NumberFormat("id-ID", {
@@ -177,6 +186,33 @@
             })
             let onData = [];
             let data = [];
+            var dialog;
+            var dialog1;
+
+            dialog = $("#dialog").dialog({
+                autoOpen : false,
+                height : 500,
+                witdh : 350,
+                modal : true,
+                buttons : {
+                    Cancel : () => {
+                        dialog.dialog("close")
+                        location.reload()
+                    }
+                }
+            })
+
+            dialog1 = $("#dialog1").dialog({
+                autoOpen : false,
+                height : 500,
+                witdh : 350,
+                modal : true,
+                buttons : {
+                    Cancel : () => {
+                        dialog1.dialog("close")
+                    }
+                }
+            })
 
             onData.map((element, i) => {
                 $("<div>", {
@@ -207,6 +243,11 @@
                 var check = $('input[name="payment"]:checked').val()
                 var customer_name = $("#customer").val()
 
+                if (customer_name.length === 0) {
+                    dialog1.dialog("open")
+                    return;
+                }
+
                 $.ajax({
                     url : "http://localhost:3000/api/v1/order",
                     method : "POST",
@@ -214,6 +255,9 @@
                         "orderCustomer" : customer_name,
                         "orderItem" : JSON.stringify(onData),
                         "orderPayment" : check
+                    },
+                    success : (data) => {
+                        dialog.dialog("open")
                     }
                 })
             })
