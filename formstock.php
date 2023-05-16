@@ -109,7 +109,7 @@
                                                     <input type="text" name="inputId" id="inputId" value="<?php echo $_GET["item_id"] ;?>" hidden>
                                                     <div class="mb-3">
                                                       <label for="InputName" class="form-label">Name Barang</label>
-                                                      <input type="text" class="form-control" id="namaBarang">
+                                                      <input type="text" class="form-control" id="namaBarang" disabled readonly>
                                                     </div>
                                                     <div class="mb-3">
                                                       <label for="InputName" class="form-label">Stock Tersedia(pcs)</label>

@@ -112,6 +112,11 @@
                                             <div class="col-md-15 py-2">
                                                 <form>
                                                     <div class="mb-3">
+                                                        <label for="InputName" class="form-label">Kode Kontrak</label>
+                                                        <select name="InputContract" id="InputContract" class="form-select">
+                                                        </select>
+                                                      </div>
+                                                    <div class="mb-3">
                                                       <label for="InputName" class="form-label">Name Barang</label>
                                                       <input type="text" class="form-control" id="namaBarang">
                                                     </div>
@@ -183,9 +188,18 @@
                 }
             })
 
+            for (let i = 1; i <= 10; i++) {
+                $("<option>", {
+                    html : `A00${i}`,
+                    value : `A00${i}`
+                }).appendTo($("#InputContract"))
+                
+            }
+
             $("#addItem").click((e) => {
                 e.preventDefault()
 
+                const kodeKontrak = $("#InputContract").val()
                 const namaBarang = $("#namaBarang").val()
                 const stockTersedia = $("#stockTersedia").val()
                 const satuan = $("#satuan").val()
@@ -196,21 +210,18 @@
                     url : "http://localhost:3000/api/v1/item/stockup",
                     method : "POST",
                     data : {
-                        "itemName" : namaBarang,
+                        "itemName" : `${kodeKontrak} - ${namaBarang}`,
                         "itemStock" : stockTersedia,
                         "itemSatuan" : satuan,
                         "itemExpired" : dateExpired,
                         "itemLastupdate" : dateLastUpdate
                     },
                     success : (data) => {
-                        console.log(data);
-                        
+                        dialog.dialog("open")  
                     },
                     error : (err) => {
-                        console.log(err);
                     }
                 })
-                dialog.dialog("open")
             })
         </script>
     </body>

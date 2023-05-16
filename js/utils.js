@@ -25,8 +25,22 @@ const similiar = (dataCheck, sim) => {
 }
 
 const priceInK = (price) => {
-    var strPrice = price.toString();
-    var priceRtn = strPrice.slice(0,2) + "K"
+    let strPrice = price.toString();;
+    let priceRtn;
+
+    switch (strPrice.length) {
+        case 4:        
+            priceRtn = strPrice.slice(0,1) + "K"       
+            break;
+        
+        case 6:
+            priceRtn = strPrice.slice(0,3) + "K"
+            break;
+
+        default:
+            priceRtn = strPrice.slice(0,2) + "K"
+            break;
+    }
 
     return priceRtn;
 }
