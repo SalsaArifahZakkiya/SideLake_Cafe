@@ -170,8 +170,12 @@
                                         <td>${val.item_name}</td>
                                         <td>${val.item_stock}</td>
                                         <td>${val.item_satuan}</td>
-                                        <td>${val.item_expired}</td>
-                                        <td>${val.item_lastupdate}</td>
+                                        <td>
+                                            <span class="badge text-bg-danger">${val.item_expired}</span>
+                                        </td>
+                                        <td>
+                                            <span class="badge text-bg-warning">${val.item_lastupdate}</span>
+                                        </td>
                                         <td>
                                             <form action="formstock.php" method="get">
                                                 <input type="text" name="item_id" id="item_id" value="${val.item_id}" hidden>
