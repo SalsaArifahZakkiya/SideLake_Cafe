@@ -148,8 +148,12 @@
                                     <td>${val.item_name}</td>
                                     <td>${val.item_stockout}</td>
                                     <td>${val.item_satuan}</td>
-                                    <td>${val.item_expired}</td>
-                                    <td>${val.item_lastupdate}</td>`
+                                    <td>
+                                        <span class="badge text-bg-danger">${val.item_expired} </span>
+                                    </td>
+                                    <td>
+                                        <span class="badge text-bg-warning">${val.item_lastupdate} </span>
+                                    </td>`
                         }).appendTo($("#table-body"))
                     })
                     console.log(data.data);
