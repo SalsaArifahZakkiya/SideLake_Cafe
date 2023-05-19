@@ -161,7 +161,7 @@
         <script>
             const getDataTable = () => {
                 $.ajax({
-                    url : "http://localhost:3000/api/v1/item/stockup",
+                    url : "https://attractive-wetsuit-pig.cyclic.app/api/v1/item/stockup",
                     method : "GET",
                     success: (data) => {
                         data.data.map((val, i) => {
@@ -195,7 +195,7 @@
                                 e.preventDefault()
 
                                 $.ajax({
-                                    url : `http://localhost:3000/api/v1/item/stockup/delete`,
+                                    url : `https://attractive-wetsuit-pig.cyclic.app/api/v1/item/stockup/delete`,
                                     method : "POST",
                                     data : {
                                         "itemId" : val.item_id

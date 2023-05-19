@@ -165,7 +165,7 @@
             })
             
             $.ajax({
-                url : "http://localhost:3000/api/v1/menu",
+                url : "https://attractive-wetsuit-pig.cyclic.app/api/v1/menu",
                 method : "GET",
                 success : (data) => {
                     data.data.map((val, i) => {
@@ -191,7 +191,7 @@
 
                         $(`#item-${i}`).click(() => {
                         $.ajax({
-                                url : "http://localhost:3000/api/v1/menu/delete",
+                                url : "https://attractive-wetsuit-pig.cyclic.app/api/v1/menu/delete",
                                 method : "POST",
                                 data : {
                                     id : val.menu_id

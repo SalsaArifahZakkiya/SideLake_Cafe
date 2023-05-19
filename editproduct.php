@@ -174,7 +174,7 @@
                 e.preventDefault()
 
                 $.ajax({
-                    url : "http://localhost:3000/api/v1/menu/post",
+                    url : "https://attractive-wetsuit-pig.cyclic.app/api/v1/menu/post",
                     method : "POST",
                     data : {
                         id : $("#InputId").val(),

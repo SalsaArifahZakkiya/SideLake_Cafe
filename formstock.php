@@ -195,7 +195,7 @@
             }
 
             $.ajax({
-                url : `http://localhost:3000/api/v1/item/stockup/${$("#inputId").val()}`,
+                url : `https://attractive-wetsuit-pig.cyclic.app/api/v1/item/stockup/${$("#inputId").val()}`,
                 method : "GET",
                 success : (data) => {
                     data.data.map((val, i) => {
