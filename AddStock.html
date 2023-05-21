@@ -113,13 +113,47 @@
                                                 <form>
                                                     <div class="mb-3">
                                                         <label for="InputName" class="form-label">Kode Kontrak</label>
-                                                        <select name="InputContract" id="InputContract" class="form-select">
+                                                        <select id="InputContract" name="InputContract" class="form-select">
+                                                           <option selected>Pilih kode</option>
+                                                           <option value="KPI01_Kopi Arabica">KPI01_Kopi Arabica</option>
+                                                          <option value="KPI02_Kopi Robusta">KPI02_Kopi Robusta</option>
+                                                          <option value="CMR01_Creamer Dillco">CMR01_Creamer Dillco</option>
+                                                          <option value="SKM01_Susu Kental Manis">SKM01_Susu Kental Manis</option>
+                                                          <option value="SJN01_Sirup Jardin Salted Caramel">SJN01_Sirup Jardin Salted Caramel</option>
+                                                          <option value="SJN02_Sirup Jardin Pandan">SJN02_Sirup Jardin Pandan</option>
+                                                          <option value="SJN03_Sirup Jardin Mojito Mint">SJN03_Sirup Jardin Mojito Mint</option>
+                                                          <option value="SJN04_Sirup Jardin Peach">SJN04_Sirup Jardin Peach</option>
+                                                          <option value="SJN05_Sirup Jardin Vanilla">SJN05_Sirup Jardin Vanilla</option>
+                                                          <option value="SJN06_Sirup Jardin Strawberry">SJN06_Sirup Jardin Strawberry</option>
+                                                          <option value="SJN07_Sirup Jardin Hazelnut">SJN07_Sirup Jardin Hazelnut</option>
+                                                          <option value="SJN08_Sirup Jardin Cola">SJN08_Sirup Jardin Cola</option>
+                                                          <option value="HTI01_Powder HTI Matcha">HTI01_Powder HTI Matcha</option>
+                                                          <option value="HTI02_Powder HTI Red Velvet">HTI02_Powder HTI Red Velvet</option>
+                                                          <option value="DLC01_Powder Dillco Taro">DLC01_Powder Dillco Taro</option>
+                                                          <option value="DLC02_Powder Dillco Cocoa">DLC02_Powder Dillco Cocoa</option>
+                                                          <option value="SBR01_Strawberry">SBR01_Strawberry</option>
+                                                          <option value="ASD01_Air Soda">ASD01_Air Soda</option>
+                                                          <option value="KIW01_Kiwi">KIW01_Kiwi</option>
+                                                          <option value="LMN01_Lemon">LMN01_Lemon</option>
+                                                          <option value="LMN02_Lemon Peras">LMN02_Lemon Peras</option>
+                                                          <option value="GUL01_Gula Aren">GUL01_Gula Aren</option>
+                                                          <option value="GUL02_Gula Pasir">GUL02_Gula Pasir</option>
+                                                          <option value="KOM01_Kombucha">KOM01_Kombucha</option>
+                                                          <option value="MAD01_Madu Dillco">MAD01_Madu Dillco</option>
+                                                          <option value="DMN01_Daun Mint">DMN01_Daun Mint</option>
+                                                          <option value="STP01_Sirup Tropicana Orange">STP01_Sirup Tropicana Orange</option>
+                                                          <option value="STP02_Sirup Tropicana Lychee">STP02_Sirup Tropicana Lychee</option>
+                                                          <option value="SLI01_Selasih">SLI01_Selasih</option>
+                                                          <option value="SML01_Susu Milk Life">SML01_Susu Milk Life</option>
                                                         </select>
+                                                       <!--- <select name="InputContract" id="InputContract" class="form-select">
+                                                        </select>
+                                                    <!---->
                                                       </div>
-                                                    <div class="mb-3">
-                                                      <label for="InputName" class="form-label">Name Barang</label>
-                                                      <input type="text" class="form-control" id="namaBarang">
-                                                    </div>
+                                                    <!--<div class="mb-3">-->
+                                                    <!--  <label for="InputName" class="form-label">Name Barang</label>-->
+                                                    <!--  <input type="text" class="form-control" id="namaBarang">-->
+                                                    <!--</div>-->
                                                     <div class="mb-3">
                                                       <label for="InputName" class="form-label">Stock Tersedia(pcs)</label>
                                                       <input type="number" class="form-control" id="stockTersedia">
@@ -127,9 +161,12 @@
                                                     <div class="mb-3">
                                                         <label for="InputName" class="form-label">Satuan</label>
                                                         <select class="form-select" aria-label="Default select example" id="satuan">
-                                                            <option selected>Pilih satuan</option>
+                                                            <option selected>Pilih Satuan</option>
                                                             <option value="KG">KG</option>
                                                             <option value="BOX">BOX</option>
+                                                            <option value="KRAT">KRAT</option>
+                                                            <option value="BOTOL">BOTOL</option>
+                                                            <option value="BUNGKUS">BUNGKUS</option>
                                                           </select>
                                                     </div>
                                                     <div class="mb-3">
@@ -188,13 +225,6 @@
                 }
             })
 
-            for (let i = 1; i <= 10; i++) {
-                $("<option>", {
-                    html : `A00${i}`,
-                    value : `A00${i}`
-                }).appendTo($("#InputContract"))
-                
-            }
 
             $("#addItem").click((e) => {
                 e.preventDefault()
@@ -210,7 +240,7 @@
                     url : "https://attractive-wetsuit-pig.cyclic.app/api/v1/item/stockup",
                     method : "POST",
                     data : {
-                        "itemName" : `${kodeKontrak} - ${namaBarang}`,
+                        "itemName" : `${kodeKontrak}`,
                         "itemStock" : stockTersedia,
                         "itemSatuan" : satuan,
                         "itemExpired" : dateExpired,

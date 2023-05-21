@@ -113,15 +113,12 @@
                                                     </div>
                                                     <div class="mb-3">
                                                       <label for="InputName" class="form-label">Stock Tersedia(pcs)</label>
-                                                      <input type="number" class="form-control" id="stockTersedia">
+                                                      <input type="number" class="form-control" id="stockTersedia" max="<?php echo $_GET["awalStock"] ;?>" >
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="InputName" class="form-label">Satuan</label>
-                                                        <select class="form-select" aria-label="Default select example" id="satuan">
-                                                            <option selected>Pilih satuan</option>
-                                                            <option value="KG">KG</option>
-                                                            <option value="BOX">BOX</option>
-                                                          </select>
+                                                        <input type="text" class="form-control" id="satuan" disabled readonly>
+                                                      
                                                     </div>
                                                     <div lass="mb-3">
                                                         <label for="InputName" class="form-label">Expired</label>
