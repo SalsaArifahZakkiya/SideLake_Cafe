@@ -212,7 +212,7 @@
                 const itemStockOut = Number.parseInt(getLastStock(awalStock, $("#stockTersedia").val()))
 
                 $.ajax({
-                    url : "http://localhost:3000/api/v1/item/stockup/post",
+                    url : "https://attractive-wetsuit-pig.cyclic.app/api/v1/item/stockup/post",
                     method : "POST",
                     data : {
                         itemId : $("#inputId").val(),
@@ -231,7 +231,7 @@
                 })
 
                 $.ajax({
-                    url : "http://localhost:3000/api/v1/item/stockdown/",
+                    url : "https://attractive-wetsuit-pig.cyclic.app/api/v1/item/stockdown/",
                     method : "POST",
                     data : {
                         itemName : $("#namaBarang").val(),
